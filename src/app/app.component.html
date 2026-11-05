@@ -1,0 +1,90 @@
+<header class="encabezado">
+  <h1>🎴 Lotería Mexicana</h1>
+  <p>Baraja tradicional de 54 cartas, cantada en voz alta</p>
+</header>
+
+@if (errorCarga) {
+  <p class="aviso aviso-error">{{ errorCarga }}</p>
+}
+@if (!voz.soportada) {
+  <p class="aviso">Tu navegador no ofrece síntesis de voz: las cartas se mostrarán en pantalla sin sonido.</p>
+}
+
+<main class="tablero">
+  <!-- Carta que se está cantando en este momento -->
+  <section class="escenario" aria-live="polite">
+    @if (cartaActual; as carta) {
+      <app-carta [carta]="carta" />
+      <p class="progreso-texto">Carta {{ indice + 1 }} de {{ orden.length }}</p>
+      <div class="barra-progreso" role="progressbar" [attr.aria-valuenow]="indice + 1" [attr.aria-valuemax]="orden.length">
+        <div class="relleno" [style.width.%]="progreso"></div>
+      </div>
+    } @else if (orden.length) {
+      <p class="indicacion">Baraja lista. Presiona <strong>Comenzar a cantar</strong>.</p>
+    } @else {
+      <p class="indicacion">Presiona <strong>Barajar nueva ronda</strong> para empezar.</p>
+    }
+    @if (rondaTerminada) {
+      <p class="fin-ronda">🎉 ¡Ronda terminada!</p>
+    }
+  </section>
+
+  <!-- Botones y ajustes del canto -->
+  <section class="controles">
+    <div class="fila-botones">
+      <button type="button" class="boton boton-primario" (click)="nuevaRonda()">
+        Barajar nueva ronda
+      </button>
+      @if (!cantando) {
+        <button type="button" class="boton boton-primario" (click)="comenzar()"
+                [disabled]="!orden.length || rondaTerminada">
+          Comenzar a cantar
+        </button>
+      } @else {
+        <button type="button" class="boton" (click)="pausar()">Pausar</button>
+      }
+      <button type="button" class="boton" (click)="siguienteManual()"
+              [disabled]="!orden.length || rondaTerminada">
+        Siguiente carta
+      </button>
+      <button type="button" class="boton boton-peligro" (click)="detener()" [disabled]="indice < 0">
+        Detener
+      </button>
+    </div>
+
+    <div class="ajustes">
+      <label class="ajuste">
+        <input type="checkbox" [(ngModel)]="decirNumero">
+        Decir el número antes del nombre
+      </label>
+
+      <label class="ajuste">
+        Velocidad de voz: {{ velocidadVoz | number:'1.1-1' }}×
+        <input type="range" min="0.6" max="1.4" step="0.1"
+               [value]="velocidadVoz" (input)="cambiarVelocidad($event)">
+      </label>
+
+      <label class="ajuste">
+        Pausa entre cartas (segundos)
+        <input type="number" min="0" max="10" step="0.5"
+               [value]="pausaSegundos" (input)="cambiarPausa($event)">
+      </label>
+    </div>
+  </section>
+
+  <!-- Historial de la ronda -->
+  @if (cantadas.length) {
+    <section class="historial">
+      <h2>Cartas cantadas</h2>
+      <ol class="lista-historial">
+        @for (carta of cantadas; track carta.numero) {
+          <li><app-carta [carta]="carta" [miniatura]="true" /></li>
+        }
+      </ol>
+    </section>
+  }
+</main>
+
+<footer class="pie">
+  Los textos de las cartas viven en <code>src/assets/cartas.json</code> y las imágenes en <code>barajas/</code>.
+</footer>

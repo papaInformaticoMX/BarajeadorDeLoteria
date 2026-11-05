@@ -1,0 +1,11 @@
+<figure class="carta" [class.miniatura]="miniatura()">
+  <img
+    [src]="rutaImagen"
+    [alt]="'Carta número ' + carta().numero + ': ' + carta().nombre"
+    loading="lazy"
+  >
+  <figcaption>
+    <span class="numero">{{ carta().numero }}</span>
+    <span class="nombre">{{ carta().nombre }}</span>
+  </figcaption>
+</figure>

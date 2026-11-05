@@ -1,0 +1,272 @@
+[
+  {
+    "numero": 1,
+    "nombre": "El Gallo",
+    "imagen": "1.ElGallo.jpg"
+  },
+  {
+    "numero": 2,
+    "nombre": "El Diablito",
+    "imagen": "2.ElDiablo.jpg"
+  },
+  {
+    "numero": 3,
+    "nombre": "La Dama",
+    "imagen": "3.LaDama.jpg"
+  },
+  {
+    "numero": 4,
+    "nombre": "El Catrín",
+    "imagen": "4.ElCatrin.jpg"
+  },
+  {
+    "numero": 5,
+    "nombre": "El Paraguas",
+    "imagen": "5.ElParaguas.jpg"
+  },
+  {
+    "numero": 6,
+    "nombre": "La Sirena",
+    "imagen": "6.LaSirena.jpg"
+  },
+  {
+    "numero": 7,
+    "nombre": "La Escalera",
+    "imagen": "7.LaEscalera.jpg"
+  },
+  {
+    "numero": 8,
+    "nombre": "La Botella",
+    "imagen": "8.LaBotella.jpg"
+  },
+  {
+    "numero": 9,
+    "nombre": "El Barril",
+    "imagen": "9.ElBarril.jpg"
+  },
+  {
+    "numero": 10,
+    "nombre": "El Árbol",
+    "imagen": "10.ElArbol.jpg"
+  },
+  {
+    "numero": 11,
+    "nombre": "El Melón",
+    "imagen": "11.ElMelon.jpg"
+  },
+  {
+    "numero": 12,
+    "nombre": "El Valiente",
+    "imagen": "12.ElValiente.jpg"
+  },
+  {
+    "numero": 13,
+    "nombre": "El Gorrito",
+    "imagen": "13.ElGorrito.jpg"
+  },
+  {
+    "numero": 14,
+    "nombre": "La Muerte",
+    "imagen": "14.LaMuerte.jpg"
+  },
+  {
+    "numero": 15,
+    "nombre": "La Pera",
+    "imagen": "15.LaPera.jpg"
+  },
+  {
+    "numero": 16,
+    "nombre": "La Bandera",
+    "imagen": "16.LaBandera.jpg"
+  },
+  {
+    "numero": 17,
+    "nombre": "El Bandolón",
+    "imagen": "17.ElBandolon.jpg"
+  },
+  {
+    "numero": 18,
+    "nombre": "El Violoncello",
+    "imagen": "18.ElVioloncello.jpg"
+  },
+  {
+    "numero": 19,
+    "nombre": "La Garza",
+    "imagen": "19.LaGarza.jpg"
+  },
+  {
+    "numero": 20,
+    "nombre": "El Pájaro",
+    "imagen": "20.ElPajaro.jpg"
+  },
+  {
+    "numero": 21,
+    "nombre": "La Mano",
+    "imagen": "21.LaMano.jpg"
+  },
+  {
+    "numero": 22,
+    "nombre": "La Bota",
+    "imagen": "22.LaBota.jpg"
+  },
+  {
+    "numero": 23,
+    "nombre": "La Luna",
+    "imagen": "23.LaLuna.jpg"
+  },
+  {
+    "numero": 24,
+    "nombre": "El Cotorro",
+    "imagen": "24.ElCotorro.jpg"
+  },
+  {
+    "numero": 25,
+    "nombre": "El Borracho",
+    "imagen": "25.ElBorracho.jpg"
+  },
+  {
+    "numero": 26,
+    "nombre": "El Negrito",
+    "imagen": "26.ElNegrito.jpg"
+  },
+  {
+    "numero": 27,
+    "nombre": "El Corazón",
+    "imagen": "27.ElCorazon.jpg"
+  },
+  {
+    "numero": 28,
+    "nombre": "La Sandia",
+    "imagen": "28.LaSandia.jpg"
+  },
+  {
+    "numero": 29,
+    "nombre": "El Tambor",
+    "imagen": "29.ElTambor.jpg"
+  },
+  {
+    "numero": 30,
+    "nombre": "El Camarón",
+    "imagen": "30.ElCamaron.jpg"
+  },
+  {
+    "numero": 31,
+    "nombre": "Las Jaras",
+    "imagen": "31.LasJaras.jpg"
+  },
+  {
+    "numero": 32,
+    "nombre": "El Músico",
+    "imagen": "32.ElMusico.jpg"
+  },
+  {
+    "numero": 33,
+    "nombre": "La Araña",
+    "imagen": "33.LaArana.jpg"
+  },
+  {
+    "numero": 34,
+    "nombre": "El Soldado",
+    "imagen": "34.ElSoldado.jpg"
+  },
+  {
+    "numero": 35,
+    "nombre": "La Estrella",
+    "imagen": "35.LaEstrella.jpg"
+  },
+  {
+    "numero": 36,
+    "nombre": "El Cazo",
+    "imagen": "36.ElCazo.jpg"
+  },
+  {
+    "numero": 37,
+    "nombre": "El Mundo",
+    "imagen": "37.ElMundo.jpg"
+  },
+  {
+    "numero": 38,
+    "nombre": "El Apache",
+    "imagen": "38.ElApache.jpg"
+  },
+  {
+    "numero": 39,
+    "nombre": "El Nopal",
+    "imagen": "39.ElNopal.jpg"
+  },
+  {
+    "numero": 40,
+    "nombre": "El Alacrán",
+    "imagen": "40.ElAlacran.jpg"
+  },
+  {
+    "numero": 41,
+    "nombre": "La Rosa",
+    "imagen": "41.LaRosa.jpg"
+  },
+  {
+    "numero": 42,
+    "nombre": "La Calavera",
+    "imagen": "42.LaCalavera.jpg"
+  },
+  {
+    "numero": 43,
+    "nombre": "La Campana",
+    "imagen": "43.LaCampana.jpg"
+  },
+  {
+    "numero": 44,
+    "nombre": "El Cantarito",
+    "imagen": "44.ElCantarito.jpg"
+  },
+  {
+    "numero": 45,
+    "nombre": "El Venado",
+    "imagen": "45.ElVenado.jpg"
+  },
+  {
+    "numero": 46,
+    "nombre": "El Sol",
+    "imagen": "46.ElSol.jpg"
+  },
+  {
+    "numero": 47,
+    "nombre": "La Corona",
+    "imagen": "47.LaCorona.jpg"
+  },
+  {
+    "numero": 48,
+    "nombre": "La Chalupa",
+    "imagen": "48.LaChalupa.jpg"
+  },
+  {
+    "numero": 49,
+    "nombre": "El Pino",
+    "imagen": "49.ElPino.jpg"
+  },
+  {
+    "numero": 50,
+    "nombre": "El Pescado",
+    "imagen": "50.ElPescado.jpg"
+  },
+  {
+    "numero": 51,
+    "nombre": "La Palma",
+    "imagen": "51.LaPalmera.jpg"
+  },
+  {
+    "numero": 52,
+    "nombre": "La Maceta",
+    "imagen": "52.LaMaceta.jpg"
+  },
+  {
+    "numero": 53,
+    "nombre": "El Arpa",
+    "imagen": "53.ElArpa.jpg"
+  },
+  {
+    "numero": 54,
+    "nombre": "La Rana",
+    "imagen": "54.LaRana.jpg"
+  }
+]
