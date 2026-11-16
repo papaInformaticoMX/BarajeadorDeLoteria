@@ -15,7 +15,6 @@ import { VozService } from './servicios/voz.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
   imports: [CartaComponent, FormsModule, DecimalPipe],
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -44,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ---- Ajustes que el jugador puede mover en pantalla ----
   /** Si se anuncia "Número 14: La Muerte" o solamente "La Muerte". */
-  decirNumero = true;
+  decirNumero = false;
   /** Velocidad de la voz (1 = normal). */
   velocidadVoz = 1;
   /** Segundos de silencio entre carta y carta. */

@@ -1,11 +1,23 @@
-<figure class="carta" [class.miniatura]="miniatura()">
+@let clasesImagen = miniatura()
+  ? 'block w-[74px] rounded-lg border-2 border-neutral-900 shadow-sm'
+  : 'block w-52 max-w-[70vw] rounded-xl border-4 border-neutral-900 shadow-lg sm:w-60 md:w-64';
+@let clasesFigcaption = miniatura()
+  ? 'text-center font-semibold'
+  : 'flex items-baseline gap-2 font-bold';
+@let clasesNumero = miniatura() ? 'text-xs text-neutral-500' : 'text-base text-neutral-500';
+@let clasesNombre = miniatura()
+  ? 'text-[0.7rem] uppercase tracking-wide'
+  : 'text-xl uppercase tracking-wide sm:text-2xl';
+
+<figure class="m-0 flex flex-col items-center" [class.gap-2]="!miniatura()">
   <img
     [src]="rutaImagen"
     [alt]="'Carta número ' + carta().numero + ': ' + carta().nombre"
     loading="lazy"
+    [class]="clasesImagen"
   >
-  <figcaption>
-    <span class="numero">{{ carta().numero }}</span>
-    <span class="nombre">{{ carta().nombre }}</span>
+  <figcaption [class]="clasesFigcaption">
+    <span [class]="clasesNumero">{{ carta().numero }}</span>
+    <span [class]="clasesNombre">{{ carta().nombre }}</span>
   </figcaption>
 </figure>

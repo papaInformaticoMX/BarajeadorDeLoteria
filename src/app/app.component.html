@@ -1,90 +1,113 @@
-<header class="encabezado">
-  <h1>🎴 Lotería Mexicana</h1>
-  <p>Baraja tradicional de 54 cartas, cantada en voz alta</p>
+<header class="px-4 pt-8 pb-4 text-center">
+  <h1 class="text-2xl font-bold tracking-wide sm:text-3xl md:text-4xl">🎴 Lotería Mexicana</h1>
+  <p class="mt-1 text-sm text-neutral-600 sm:text-base">
+    Baraja tradicional de 54 cartas, cantada en voz alta
+  </p>
 </header>
 
 @if (errorCarga) {
-  <p class="aviso aviso-error">{{ errorCarga }}</p>
+  <p class="mx-auto my-3 max-w-3xl rounded-lg border border-red-300 px-4 py-2 text-center text-red-600">
+    {{ errorCarga }}
+  </p>
 }
 @if (!voz.soportada) {
-  <p class="aviso">Tu navegador no ofrece síntesis de voz: las cartas se mostrarán en pantalla sin sonido.</p>
+  <p class="mx-auto my-3 max-w-3xl rounded-lg border border-amber-300 px-4 py-2 text-center text-amber-700">
+    Tu navegador no ofrece síntesis de voz: las cartas se mostrarán en pantalla sin sonido.
+  </p>
 }
 
-<main class="tablero">
+<main class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-6 sm:px-6">
   <!-- Carta que se está cantando en este momento -->
-  <section class="escenario" aria-live="polite">
+  <section class="flex min-h-80 flex-col items-center justify-center gap-4" aria-live="polite">
     @if (cartaActual; as carta) {
-      <app-carta [carta]="carta" />
-      <p class="progreso-texto">Carta {{ indice + 1 }} de {{ orden.length }}</p>
-      <div class="barra-progreso" role="progressbar" [attr.aria-valuenow]="indice + 1" [attr.aria-valuemax]="orden.length">
-        <div class="relleno" [style.width.%]="progreso"></div>
+      <!-- La clave del @for cambia con cada carta, así el navegador
+           recrea el elemento y la animación de entrada vuelve a correr. -->
+      @for (c of [carta]; track c.numero) {
+        <div class="animar-carta">
+          <app-carta [carta]="c" />
+        </div>
+      }
+      <p class="text-sm text-neutral-600">Carta {{ indice + 1 }} de {{ orden.length }}</p>
+      <div
+        class="h-2.5 w-full max-w-md overflow-hidden rounded-full bg-neutral-200"
+        role="progressbar"
+        [attr.aria-valuenow]="indice + 1"
+        [attr.aria-valuemax]="orden.length"
+      >
+        <div class="h-full bg-neutral-900 transition-[width] duration-500 ease-out" [style.width.%]="progreso"></div>
       </div>
     } @else if (orden.length) {
-      <p class="indicacion">Baraja lista. Presiona <strong>Comenzar a cantar</strong>.</p>
+      <p class="text-center text-base text-neutral-700 sm:text-lg">
+        Baraja lista. Presiona <strong>Comenzar a cantar</strong>.
+      </p>
     } @else {
-      <p class="indicacion">Presiona <strong>Barajar nueva ronda</strong> para empezar.</p>
+      <p class="text-center text-base text-neutral-700 sm:text-lg">
+        Presiona <strong>Barajar nueva ronda</strong> para empezar.
+      </p>
     }
     @if (rondaTerminada) {
-      <p class="fin-ronda">🎉 ¡Ronda terminada!</p>
+      <p class="text-xl font-bold sm:text-2xl">🎉 ¡Ronda terminada!</p>
     }
   </section>
 
   <!-- Botones y ajustes del canto -->
-  <section class="controles">
-    <div class="fila-botones">
-      <button type="button" class="boton boton-primario" (click)="nuevaRonda()">
+  <section class="flex flex-col gap-4 rounded-xl border border-neutral-200 p-4 sm:p-5">
+    @let clasesBoton = 'rounded-full border border-neutral-400 px-5 py-2.5 font-semibold transition hover:bg-neutral-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50';
+    <div class="flex flex-wrap justify-center gap-2">
+      <button type="button" [class]="clasesBoton" (click)="nuevaRonda()">
         Barajar nueva ronda
       </button>
       @if (!cantando) {
-        <button type="button" class="boton boton-primario" (click)="comenzar()"
+        <button type="button" [class]="clasesBoton" (click)="comenzar()"
                 [disabled]="!orden.length || rondaTerminada">
           Comenzar a cantar
         </button>
       } @else {
-        <button type="button" class="boton" (click)="pausar()">Pausar</button>
+        <button type="button" [class]="clasesBoton" (click)="pausar()">Pausar</button>
       }
-      <button type="button" class="boton" (click)="siguienteManual()"
+      <button type="button" [class]="clasesBoton" (click)="siguienteManual()"
               [disabled]="!orden.length || rondaTerminada">
         Siguiente carta
       </button>
-      <button type="button" class="boton boton-peligro" (click)="detener()" [disabled]="indice < 0">
+      <button type="button" [class]="clasesBoton" (click)="detener()" [disabled]="indice < 0">
         Detener
       </button>
     </div>
 
-    <div class="ajustes">
-      <label class="ajuste">
-        <input type="checkbox" [(ngModel)]="decirNumero">
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" [(ngModel)]="decirNumero" class="h-4 w-4">
         Decir el número antes del nombre
       </label>
 
-      <label class="ajuste">
+      <label class="flex flex-wrap items-center gap-2">
         Velocidad de voz: {{ velocidadVoz | number:'1.1-1' }}×
         <input type="range" min="0.6" max="1.4" step="0.1"
-               [value]="velocidadVoz" (input)="cambiarVelocidad($event)">
+               [value]="velocidadVoz" (input)="cambiarVelocidad($event)" class="w-32">
       </label>
 
-      <label class="ajuste">
+      <label class="flex flex-wrap items-center gap-2">
         Pausa entre cartas (segundos)
         <input type="number" min="0" max="10" step="0.5"
-               [value]="pausaSegundos" (input)="cambiarPausa($event)">
+               [value]="pausaSegundos" (input)="cambiarPausa($event)"
+               class="w-20 rounded-md border border-neutral-300 px-2 py-1">
       </label>
     </div>
   </section>
 
   <!-- Historial de la ronda -->
   @if (cantadas.length) {
-    <section class="historial">
-      <h2>Cartas cantadas</h2>
-      <ol class="lista-historial">
+    <section>
+      <h2 class="mb-2 text-lg font-semibold">Cartas cantadas</h2>
+      <ol class="flex gap-2 overflow-x-auto pb-2">
         @for (carta of cantadas; track carta.numero) {
-          <li><app-carta [carta]="carta" [miniatura]="true" /></li>
+          <li class="shrink-0"><app-carta [carta]="carta" [miniatura]="true" /></li>
         }
       </ol>
     </section>
   }
 </main>
 
-<footer class="pie">
-  Los textos de las cartas viven en <code>src/assets/cartas.json</code> y las imágenes en <code>barajas/</code>.
+<footer class="px-4 pb-6 text-center text-xs text-neutral-500">
+  Los textos de las cartas viven en <code class="rounded bg-neutral-100 px-1 py-0.5">src/assets/cartas.json</code> y las imágenes en <code class="rounded bg-neutral-100 px-1 py-0.5">barajas/</code>.
 </footer>

@@ -1,32 +1,23 @@
-/* =========================================================
-   Estilos globales: paleta de colores y base de la página.
-   Cambia aquí los colores de toda la aplicación.
-   ========================================================= */
+@import "tailwindcss";
 
-:root {
-  --color-fondo: #0e3b2e;        /* Verde profundo de fondo */
-  --color-fondo-suave: #14503e;  /* Verde para paneles */
-  --color-texto: #fdf6e3;        /* Crema para letras */
-  --color-dorado: #f4c430;       /* Amarillo lotería */
-  --color-rojo: #c1272d;         /* Rojo mexicano */
-  --color-marco: #fdf6e3;        /* Marco de las cartas */
+/* Animación de entrada para cada carta nueva (sin color de fondo). */
+@keyframes aparecer-carta {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-* {
-  box-sizing: border-box;
+.animar-carta {
+  animation: aparecer-carta 0.45s ease-out both;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(165deg, var(--color-fondo-suave), var(--color-fondo) 60%);
-  color: var(--color-texto);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-}
-
-code {
-  background: rgb(255 255 255 / 0.12);
-  border-radius: 4px;
-  padding: 0.1rem 0.35rem;
+@media (prefers-reduced-motion: reduce) {
+  .animar-carta {
+    animation: none;
+  }
 }

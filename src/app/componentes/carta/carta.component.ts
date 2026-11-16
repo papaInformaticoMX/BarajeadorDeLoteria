@@ -9,7 +9,6 @@ import { Carta } from '../../modelos/carta';
 @Component({
   selector: 'app-carta',
   templateUrl: './carta.component.html',
-  styleUrl: './carta.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartaComponent {
