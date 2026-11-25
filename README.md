@@ -17,6 +17,21 @@ Para generar la versión de producción: `npm run build` (queda en `dist/`).
 > La voz funciona mejor en Chrome y Edge. Si el navegador no tiene síntesis de voz,
 > la aplicación sigue mostrando las cartas en pantalla y avisa con un mensaje.
 
+## Despliegue en GitHub Pages
+
+La app se publica en <https://papainformaticomx.github.io/BarajeadorDeLoteria/>.
+
+- **Automático**: cada push a `master` ejecuta `.github/workflows/deploy.yml`
+  (build + publicación). Requiere que en *Settings > Pages > Source* esté
+  seleccionado **GitHub Actions**.
+- **Manual**: `npm run deploy` construye en producción y sube la carpeta a la
+  rama `gh-pages` con `angular-cli-ghpages`. Para este modo, en
+  *Settings > Pages > Source* hay que elegir la rama **gh-pages**.
+
+El `baseHref` es relativo (`./` en `angular.json`), así la app funciona tanto en
+`localhost` como en la subruta `/BarajeadorDeLoteria/`. Por eso las rutas de
+`assets/cartas.json` y `barajas/…` se escriben sin `/` inicial.
+
 ## Cómo se juega
 
 1. **Barajar nueva ronda**: mezcla las 54 cartas en un orden aleatorio (algoritmo Fisher-Yates).
