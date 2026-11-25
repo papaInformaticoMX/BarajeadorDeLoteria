@@ -18,7 +18,10 @@ export class CartaComponent {
   /** Dibujo reducido para listas; por defecto se muestra en grande. */
   miniatura = input(false);
 
-  /** Las imágenes viven en la carpeta barajas/ (mapeada en angular.json). */
+  /**
+   * Las imágenes viven en la carpeta barajas/ (mapeada en angular.json).
+   * Ruta sin "/" inicial para que respete el <base href> de GitHub Pages.
+   */
   get rutaImagen(): string {
     return `barajas/${this.carta().imagen}`;
   }

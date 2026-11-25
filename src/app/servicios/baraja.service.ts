@@ -4,9 +4,12 @@ import { Observable } from 'rxjs';
 
 import { Carta } from '../modelos/carta';
 
-/** Ruta del archivo de textos, servido desde src/assets (ver angular.json). */
+/**
+ * Ruta del archivo de textos, servido desde src/assets (ver angular.json).
+ * Se escribe sin "/" inicial para que respete el <base href> y funcione
+ * tanto en local como en GitHub Pages.
+ */
 const RUTA_CARTAS = 'assets/cartas.json';
-
 /**
  * Se encarga de todo lo relacionado con las cartas:
  * leerlas del JSON y mezclarlas en un orden aleatorio.

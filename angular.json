@@ -19,6 +19,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "baseHref": "./",
             "assets": [
               {
                 "glob": "**/*",
@@ -74,6 +75,16 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "dir": "dist/loteria-mexicana/browser",
+            "branch": "gh-pages",
+            "baseHref": "/BarajeadorDeLoteria/",
+            "name": "Pepe Rosado",
+            "email": "peperosadoimss@gmail.com"
+          }
         }
       }
     }
